@@ -116,7 +116,8 @@ def get_wikidata_mapping(name2id_path,
                 if "sitelinks" in doc:
                     for key, value in doc["sitelinks"].items():
                         if key.endswith("wiki"):
-                            fout_name2id.write(key + "/" + value["title"] + "\t" + str(index) + "\n")
+                            s = key + "/" + value["title"].encode('utf-8').decode('latin-1') + "\t" + str(index) + "\n"
+                            fout_name2id.write(s.encode('ascii','ignore').decode('ascii'))
             index += 1
             if fout_wikidata_ids is not None:
                 fout_wikidata_ids.write(doc["id"] + "\n")

@@ -297,6 +297,7 @@ def main():
                     prefix=prefix)
                 for paragraph in fixed_article:
                     for word, qids in paragraph:
+                        word = word.encode('ascii', 'ignore').decode('ascii')
                         if len(qids) > 0:
                             fout.write(word.rstrip() + "\t" + "\t".join(qids + [article_qid]) + "\n")
                         else:

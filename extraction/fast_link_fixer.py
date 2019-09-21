@@ -143,7 +143,7 @@ def initialize_globals(c):
     EVENT_OCCURRENCE = wkd(c, "Q1190554")
     ELECTROMAGNETIC_SPECTRUM = wkd(c, "Q133139")
     MAGICAL_ORG = wkd(c, "Q14946195")
-    AUTONOM_CHURCH = wkd(c, "Q20871948")
+    AUTONOM_CHURCH = wkd(c, "Q6566418")
     SIGN = wkd(c, "Q3695082")
     FORM_OF_GOVERNMENT = wkd(c, "Q1307214")
     SPORTS_ORG = wkd(c, "Q4438121")

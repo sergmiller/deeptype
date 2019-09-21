@@ -102,16 +102,18 @@ def anchor_category_redirection_link_job(args):
 
 def run_jobs(worker_pool, pool_jobs, outfile_anchors, outfile_redirections, outfile_category_links):
     results = worker_pool.map(anchor_category_redirection_link_job, pool_jobs)
+    fix = lambda s: s.encode('ascii', 'ignore').decode('ascii')
     for article_name, result in results:
         anchor_links, redirect_links, category_links = result
         for link in redirect_links:
-            outfile_redirections.write(article_name + "\t" + link + "\n")
+            outfile_redirections.write(fix(article_name + "\t" + link + "\n"))
         for link in category_links:
-            outfile_category_links.write(article_name + "\t" + link + "\n")
+            s = fix(article_name + "\t" + link + "\n") 
+            outfile_category_links.write(s)
         if ":" not in article_name:
-            outfile_anchors.write(article_name + "\t" + article_name + "\t" + article_name + "\n")
+            outfile_anchors.write(fix(article_name + "\t" + article_name + "\t" + article_name + "\n"))
             for anchor, link in anchor_links:
-                outfile_anchors.write(article_name + "\t" + anchor + "\t" + link + "\n")
+                outfile_anchors.write(fix(article_name + "\t" + anchor + "\t" + link + "\n"))
 
 
 def parse_wiki(path,

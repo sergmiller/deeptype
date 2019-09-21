@@ -359,8 +359,8 @@ def fix_and_parse_tags(config, collection, size):
         break
 
     print("Load first_names")
-    with open(join(PROJECT_DIR, "data", "first_names.txt"), "rt") as fin:
-        first_names = set(fin.read().splitlines())
+    with open(join(PROJECT_DIR, "data", "first_names.txt"), "rb") as fin:
+        first_names = set(fin.read().decode('utf-8').splitlines())
 
     all_tags = []
     for doc in get_progress_bar('fixing links', item='article')(docs):
